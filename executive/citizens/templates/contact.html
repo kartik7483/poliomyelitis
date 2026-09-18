@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us - Polio Vaccination Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+      min-height: 500px;
+    }
+    h1 {
+      color: #2a8c82;
+      margin-bottom: 20px;
+    }
+    p {
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+    .contact-info {
+      margin-top: 20px;
+    }
+    .contact-info strong {
+      display: inline-block;
+      width: 80px;
+    }
+    .socials {
+      margin-top: 20px;
+    }
+    .socials a {
+      margin-right: 10px;
+      color: #2a8c82;
+      text-decoration: none;
+    }
+    .back-button {
+      display: block;
+      width: fit-content;
+      margin: 40px auto 0 auto;
+      padding: 10px 20px;
+      background-color: #2a8c82;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .back-button:hover {
+      background-color: #1f6f68;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Contact Us</h1>
+    <p>Have questions or want to get involved? We’d love to hear from you!</p>
+
+    <div class="contact-info">
+      <p><strong>Address:</strong> 999 Health Street, Dharwad, Karnataka, 580001</p>
+      <p><strong>Phone:</strong> 123-456-7890</p>
+      <p><strong>Email:</strong> <a href="mailto:info@polioproject.org">info@polioproject.org</a></p>
+      <p><strong>Website:</strong> <a href="http://www.polioproject.org" target="_blank">www.polioproject.org</a></p>
+    </div>
+
+    <div class="socials">
+      <p><strong>Follow Us:</strong></p>
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+      <a href="#">Instagram</a>
+
+    </div>
+
+    <!-- Back Button -->
+    <a href="{% url 'showindex' %}" class="back-button">Back</a> <!-- Change 'index.html' as needed -->
+  </div>
+</body>
+</html>

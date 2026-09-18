@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Polio Vaccination Project</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #f1f5f9, #e2e8f0);
+      color: #1e293b;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 10px;
+      background-color: #1e3a8a;
+      color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: -10px;
+      flex-wrap: wrap;
+    }
+
+    header img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 1px 1px 2px #0f172a;
+      text-align: center;
+      flex: 1;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      padding: 6px 12px;
+      text-decoration: none;
+      color: #e0f2fe;
+      font-weight: 600;
+      font-size: 15px;
+      background-color: transparent;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      text-decoration: none;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown input[type="checkbox"] {
+      display: none;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      background-color: #3b82f6;
+      border-radius: 4px;
+      padding: 5px;
+    }
+
+    .hamburger span {
+      height: 3px;
+      background-color: white;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #1e3a8a;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 8px;
+    }
+
+    .dropdown-content a {
+      color: #e0f2fe;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #374151;
+    }
+
+    .dropdown input:checked ~ .dropdown-content {
+      display: block;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 20px;
+      background: #f8fafc;
+      border-top: 4px solid #1e3a8a;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      flex: 1;
+      padding-right: 60px;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #1e3a8a;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      color: #475569;
+      margin-bottom: 30px;
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image .image-box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 20px;
+    }
+
+    .section {
+      padding: 40px 30px;
+      background-color: white;
+      border-top: 2px solid #cbd5e1;
+    }
+
+    .section h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .section p,
+    .section ul li {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .section ul {
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+
+    .footer {
+      background-color: #1e3a8a;
+      color: #e0f2fe;
+      padding: 40px 60px;
+      text-align: center;
+      font-size: 22px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="{% static 'logo1.png' %}" alt="Logo">
+    <div class="logo">POLIO VACCINATION PROJECT</div>
+    <nav>
+      <a href="{% url 'About' %}">About</a>
+      <a href="{% url 'changepassword' %}">Change Password</a>
+      <a href="{% url 'logcheck' %}">Logout</a>
+
+      <div class="dropdown">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <div class="dropdown-content">
+          <a href="{% url 'showhospital' %}">View Hospital</a>
+          <a href="{% url 'shownotification' %}">View Notification</a>
+          <a href="{% url 'showworker' %}">View Worker</a>
+          <a href="{% url 'insertchild' %}">Child Info</a>
+          <a href="{% url 'insertvaccinationrequest' %}">Vaccine Request</a>
+          <a href="{% url 'showdosedetails' %}">View Dosage Details</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+  <div class="hero-text">
+    <h1>Protect Your Child from Polio</h1>
+    <p>Ensure your child receives timely polio vaccinations. A healthy future starts today.</p>
+  </div>
+  <div class="hero-image">
+    <div class="image-box">
+      <img src="{% static 'p6.jpg' %}" alt="Polio Vaccination for Children">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Why Polio Vaccination Matters</h2>
+  <p>
+    Polio is a life-threatening disease that affects young children. Vaccination is the only way to protect your child. Our mission is to reach every home and ensure every child gets the necessary doses on time.
+  </p>
+</section>
+
+<section class="section" style="background-color: #f1f5f9">
+  <h2>What You Need to Do</h2>
+  <ul>
+    <li>Register your child on this portal</li>
+    <li>Keep track of upcoming vaccination dates</li>
+    <li>Visit the nearby vaccination booth during scheduled area visits</li>
+    <li>Encourage other parents in your area to vaccinate</li>
+  </ul>
+</section>
+
+<footer class="footer">
+  <p>"Every drop counts – your child deserves a polio-free future."</p>
+</footer>
+
+</body>
+</html>

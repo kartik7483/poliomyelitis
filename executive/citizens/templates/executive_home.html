@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Polio Vaccination Project</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #f1f5f9, #e2e8f0);
+      color: #1e293b;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 10px;
+      background-color: #1e3a8a;
+      color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: -10px;
+      flex-wrap: wrap;
+    }
+
+    header img {
+      width: 80px;
+      height: 80px;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 1px 1px 2px #0f172a;
+      text-align: center;
+      flex: 1;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar a {
+      padding: 6px 12px;
+      text-decoration: none;
+      color: #e0f2fe;
+      font-weight: 600;
+      font-size: 15px;
+      background-color: transparent;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      text-decoration: none;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown input[type="checkbox"] {
+      display: none;
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      background-color: #3b82f6;
+      border-radius: 4px;
+      padding: 5px;
+    }
+
+    .hamburger span {
+      height: 3px;
+      background-color: white;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #1e3a8a;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      border-radius: 8px;
+    }
+
+    .dropdown-content a {
+      color: #e0f2fe;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #374151;
+    }
+
+    .dropdown input:checked ~ .dropdown-content {
+      display: block;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 20px;
+      background: #f8fafc;
+      border-top: 4px solid #1e3a8a;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      flex: 1;
+      padding-right: 60px;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #1e3a8a;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      color: #475569;
+      margin-bottom: 30px;
+    }
+
+    .hero-text button {
+      padding: 14px 32px;
+      background-color: #1d4ed8;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero-text button:hover {
+      background-color: #2563eb;
+    }
+
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image .image-box {
+      background-color: white;
+      padding: 20px;
+      border-radius: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 20px;
+    }
+
+    .section {
+      padding: 40px 30px;
+      background-color: white;
+      border-top: 2px solid #cbd5e1;
+    }
+
+    .section h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .section p,
+    .section ul li {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .footer {
+      background-color: #1e3a8a;
+      color: #e0f2fe;
+      padding: 40px 60px;
+      text-align: center;
+      font-size: 22px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="{% static 'logo1.png' %}" alt="Logo">
+    <div class="logo">POLIO VACCINATION PROJECT</div>
+
+    <div class="navbar">
+      <a href="{% url 'showindex' %}">Home</a>
+      <a href="{% url 'changepassword' %}">Change Password</a>
+      <a href="{% url 'logcheck' %}">Logout</a>
+
+      <div class="dropdown">
+        <input type="checkbox" id="toggle">
+        <label for="toggle" class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <div class="dropdown-content">
+          <a href="{% url 'inserthosp' %}">Hospital</a>
+          <a href="{% url 'insertnotification' %}">Notification</a>
+          <a href="{% url 'insertworker' %}">Worker</a>
+           <a href="{% url 'insertstock' %}">Stock</a>
+          <a href="{% url 'insertassignedarea' %}">Assigned Area</a>
+          <a href="{% url 'showvaccinecollection' %}">View Worker Collection</a>
+          <a href="{% url 'showdosagedetails' %}">View Dosage Details</a>
+          <a href="{% url 'showstock' %}"> View Stock</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+  <div class="hero-text">
+    <h1>Empowering Administrators, Saving Lives</h1>
+    <p>Your decisions drive the mission — ensure accurate data, strong coordination, and a polio-free future.</p>
+  </div>
+  <div class="hero-image">
+    <div class="image-box">
+      <img src="{% static 'p6.jpg' %}" alt="Polio Vaccination Illustration">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Admin Dashboard Overview</h2>
+  <p>
+    As an administrator, you oversee hospitals, staff, vaccine stock, and real-time vaccination tracking. Your actions ensure operational efficiency, public safety, and accurate reporting.
+  </p>
+</section>
+
+<section class="section" style="background-color: #f1f5f9">
+  <h2>Key Responsibilities</h2>
+  <ul>
+    <li>Manage hospital and worker records</li>
+    <li>Assign areas and track field activity</li>
+    <li>Monitor vaccine inventory and usage</li>
+    <li>Review vaccination and dosage reports</li>
+    <li>Send timely notifications to field teams</li>
+  </ul>
+</section>
+
+<footer class="footer">
+  <p>"Your leadership is the backbone of our polio eradication mission."</p>
+</footer>
+
+</body>
+</html>

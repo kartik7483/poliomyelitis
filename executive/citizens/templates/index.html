@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polio Vaccination Project</title>
+
+  <style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  header img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .logo {
+    font-size: 35px;
+    font-weight: 800;
+    color: #0f172a;
+    text-align: center;
+    flex: 1;
+  }
+
+  nav a {
+    margin-left: 16px;
+    text-decoration: none;
+    color: #1d4ed8;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  nav a:hover {
+    text-decoration: underline;
+    color: #2563eb;
+  }
+
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 30px;
+    background-color: #eff6ff;
+    flex-wrap: wrap;
+  }
+
+  .hero-text {
+    flex: 1;
+    padding-right: 60px;
+  }
+
+  .hero-text h1 {
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #0f172a;
+  }
+
+  .hero-text p {
+    font-size: 18px;
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  .hero-text button {
+    padding: 12px 28px;
+    background-color: #1d4ed8;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .hero-text button:hover {
+    background-color: #2563eb;
+  }
+
+  .hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .hero-image .image-box {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .hero-image img {
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  .section {
+    padding: 40px 30px;
+    background-color: white;
+  }
+
+  .section:nth-child(even) {
+    background-color: #f1f5f9;
+  }
+
+  .section h2 {
+    font-size: 28px;
+    margin-bottom: 16px;
+    color: #1e293b;
+  }
+
+  .section p,
+  .section ul li {
+    font-size: 17px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    color: #334155;
+  }
+
+  .section ul {
+    padding-left: 20px;
+    list-style-type: disc;
+  }
+
+  .footer {
+    background-color: #1e293b;
+    color: white;
+    padding: 30px 40px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+  }
+</style>
+
+</head>
+<body>
+  <header>
+    <img src="{% static 'logo1.png' %}">
+    <div class="logo">POLIO VACCINATION PROJECT</div>
+    <nav>
+      <a href="{% url 'About' %}">About</a>
+      <a href="{% url 'logcheck' %}">Login</a>
+      <a href="{% url 'Contact' %}">Contact</a>
+
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Together, We Can Eradicate Polio!</h1>
+      <p>Join us in the fight against polio and protect our future generations.</p>
+      <a href="{% url 'logcheck' %}"><button>Get Involved</button></a>
+    </div>
+    <div class="hero-image">
+      <div class="image-box">
+        <!-- Add your image file below -->
+
+        <img src="{% static 'p6.jpg' %}" alt="Polio Vaccination Illustration">
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>What is the Polio Vaccination Project?</h2>
+    <p>
+      Our mission is to eradicate polio through vaccination and education. Polio is a highly infectious disease that can lead to paralysis and even death. By vaccinating children, we can protect them and ensure a healthier future.
+    </p>
+  </section>
+
+  <section class="section" style="background-color: #f1f5f9">
+    <h2>How You Can Help</h2>
+    <ul>
+      <li>Volunteer in vaccination drives</li>
+      <li>Donate to expand our reach</li>
+      <li>Educate and advocate in your community</li>
+    </ul>
+  </section>
+
+  <footer class="footer">
+    <p>"A world without polio starts with you...!"</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Stock</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #0077b6;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .btn {
+            background-color: #0077b6;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #005b8c;
+        }
+
+        .readonly {
+            background-color: #f8f9fa;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Update Stock Details</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="stock_id">Stock ID:</label>
+                <input type="text" id="stock_id" name="stock_id" value="{{ stock.stock_id }}" class="readonly" readonly>
+            </div>
+            <div class="form-group">
+                <label for="vaccine_name">Vaccine Name:</label>
+                <input type="text" id="vaccine_name" name="vaccine_name" value="{{ stock.vaccine_name }}" class="readonly" readonly>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" value="{{ stock.quantity }}" required>
+            </div>
+            <div class="form-group">
+                <label for="hosp_id">Hospital ID:</label>
+                <input type="text" id="hosp_id" name="hosp_id" value="{{ stock.hosp_id }}" class="readonly" readonly>
+            </div>
+            <button type="submit" class="btn">Update Stock</button>
+        </form>
+    </div>
+</body>
+</html> 
